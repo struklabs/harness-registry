@@ -1,0 +1,41 @@
+{
+  "name": "json_format",
+  "version": "1.0.0",
+  "category": "text",
+  "description": "Validate and format JSON text. Use indent=0 for compact JSON; sort_keys=true recursively sorts object keys.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "text": {
+        "type": "string",
+        "description": "JSON text to parse."
+      },
+      "indent": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 8,
+        "default": 2
+      },
+      "sort_keys": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "required": [
+      "text"
+    ],
+    "additionalProperties": false
+  },
+  "output": "Formatted JSON text, or an error if input or options are invalid. Large integers follow JavaScript number precision.",
+  "permissions": {
+    "network": [],
+    "fs": {
+      "read": [],
+      "write": []
+    },
+    "shell": false
+  },
+  "runtime": "js",
+  "entry": "index.js",
+  "test": "test.js"
+}

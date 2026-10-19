@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Official mcp entry (v1)",
+  "allOf": [
+    {
+      "$ref": "entry.schema.json"
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "mcp"
+        },
+        "id": {
+          "pattern": "^struklabs\\.mcp\\.[a-z][a-z0-9_-]*$"
+        },
+        "artifact": {
+          "pattern": "^mcp/[a-z][a-z0-9_-]*/config\\.json$"
+        }
+      }
+    }
+  ]
+}

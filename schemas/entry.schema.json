@@ -1,0 +1,172 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "type",
+    "publisher",
+    "name",
+    "description",
+    "version",
+    "license",
+    "homepage",
+    "source",
+    "platforms",
+    "permissions",
+    "tags",
+    "min_harness_version",
+    "artifact"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^struklabs\\.(skill|mcp|tool)\\.[a-z][a-z0-9_-]*$"
+    },
+    "type": {
+      "enum": [
+        "skill",
+        "mcp",
+        "tool"
+      ]
+    },
+    "publisher": {
+      "const": "StrukLabs"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "description": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "en",
+        "tr"
+      ],
+      "properties": {
+        "en": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024,
+          "pattern": "\\S"
+        },
+        "tr": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024,
+          "pattern": "\\S"
+        }
+      }
+    },
+    "version": {
+      "type": "string",
+      "maxLength": 64,
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "license": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "homepage": {
+      "type": "string",
+      "pattern": "^https://[^\\s]+$"
+    },
+    "source": {
+      "type": "string",
+      "pattern": "^https://[^\\s]+$"
+    },
+    "platforms": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "windows",
+          "macos",
+          "linux"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "permissions": {
+      "$ref": "#/$defs/permissions"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "min_harness_version": {
+      "type": "string",
+      "maxLength": 64,
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "artifact": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Official catalog entry metadata (v1)",
+  "$defs": {
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "network",
+        "fs",
+        "shell"
+      ],
+      "properties": {
+        "network": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255,
+            "pattern": "^(?:\\*\\.)?[a-z0-9](?:[a-z0-9-]*[a-z0-9])?(?:\\.[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)*$"
+          },
+          "maxItems": 32,
+          "uniqueItems": true
+        },
+        "fs": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "read",
+            "write"
+          ],
+          "properties": {
+            "read": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\\\:\\u0000]+$"
+              },
+              "maxItems": 16
+            },
+            "write": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\\\:\\u0000]+$"
+              },
+              "maxItems": 16
+            }
+          }
+        },
+        "shell": {
+          "const": false
+        }
+      }
+    }
+  }
+}

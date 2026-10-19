@@ -1,0 +1,33 @@
+{
+  "id": "struklabs.tool.json_format",
+  "type": "tool",
+  "publisher": "StrukLabs",
+  "name": "JSON Formatter",
+  "description": {
+    "en": "Validate, pretty-print or compact JSON, optionally sorting object keys. No file or network access.",
+    "tr": "JSON verisini do?rular, okunakl? veya s?k??t?r?lm?? bi?ime d?n??t?r?r ve iste?e ba?l? olarak nesne anahtarlar?n? s?ralar. Dosya veya a? eri?imi yoktur."
+  },
+  "version": "1.0.0",
+  "license": "MIT",
+  "homepage": "https://github.com/struklabs/harness-registry/tree/main/tools/json_format",
+  "source": "https://github.com/struklabs/harness-registry/tree/main/tools/json_format",
+  "platforms": [
+    "windows",
+    "macos",
+    "linux"
+  ],
+  "permissions": {
+    "network": [],
+    "fs": {
+      "read": [],
+      "write": []
+    },
+    "shell": false
+  },
+  "tags": [
+    "json",
+    "formatting"
+  ],
+  "min_harness_version": "0.1.0",
+  "artifact": "tools/json_format"
+}

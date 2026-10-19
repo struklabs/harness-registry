@@ -1,0 +1,35 @@
+{
+  "id": "struklabs.mcp.microsoft-learn",
+  "type": "mcp",
+  "publisher": "StrukLabs",
+  "name": "Microsoft Learn",
+  "description": {
+    "en": "Search Microsoft documentation and code samples through the official Microsoft Learn MCP server.",
+    "tr": "Resm? Microsoft Learn MCP sunucusu ?zerinden Microsoft belgelerinde ve kod ?rneklerinde arama yapar."
+  },
+  "version": "1.0.0",
+  "license": "MIT",
+  "homepage": "https://github.com/struklabs/harness-registry/tree/main/mcp/microsoft-learn",
+  "source": "https://github.com/struklabs/harness-registry/tree/main/mcp/microsoft-learn",
+  "platforms": [
+    "windows",
+    "macos",
+    "linux"
+  ],
+  "permissions": {
+    "network": [
+      "learn.microsoft.com"
+    ],
+    "fs": {
+      "read": [],
+      "write": []
+    },
+    "shell": false
+  },
+  "tags": [
+    "documentation",
+    "microsoft"
+  ],
+  "min_harness_version": "0.1.0",
+  "artifact": "mcp/microsoft-learn/config.json"
+}
