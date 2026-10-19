@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Official tool entry (v1)",
+  "allOf": [
+    {
+      "$ref": "entry.schema.json"
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "tool"
+        },
+        "id": {
+          "pattern": "^struklabs\\.tool\\.[a-z][a-z0-9_-]*$"
+        },
+        "artifact": {
+          "pattern": "^tools/[a-z][a-z0-9_-]*$"
+        }
+      }
+    }
+  ]
+}

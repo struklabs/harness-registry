@@ -1,0 +1,33 @@
+{
+  "id": "struklabs.skill.release-notes",
+  "type": "skill",
+  "publisher": "StrukLabs",
+  "name": "Release Notes",
+  "description": {
+    "en": "Turn supplied changes or a diff into user-facing release notes. Use when preparing a changelog or release announcement.",
+    "tr": "Sa?lanan de?i?ikliklerden veya diff ??kt?s?ndan kullan?c?ya y?nelik s?r?m notlar? haz?rlar. De?i?iklik g?nl??? veya s?r?m duyurusu yazarken kullan?l?r."
+  },
+  "version": "1.0.0",
+  "license": "MIT",
+  "homepage": "https://github.com/struklabs/harness-registry/tree/main/skills/release-notes",
+  "source": "https://github.com/struklabs/harness-registry/tree/main/skills/release-notes",
+  "platforms": [
+    "windows",
+    "macos",
+    "linux"
+  ],
+  "permissions": {
+    "network": [],
+    "fs": {
+      "read": [],
+      "write": []
+    },
+    "shell": false
+  },
+  "tags": [
+    "writing",
+    "releases"
+  ],
+  "min_harness_version": "0.1.0",
+  "artifact": "skills/release-notes/SKILL.md"
+}

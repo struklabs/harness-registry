@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Harness official catalog index (v1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "entries"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "schemas/skill.schema.json"
+          },
+          {
+            "$ref": "schemas/mcp.schema.json"
+          },
+          {
+            "$ref": "schemas/tool.schema.json"
+          }
+        ]
+      }
+    }
+  }
+}

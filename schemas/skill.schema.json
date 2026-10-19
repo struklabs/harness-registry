@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Official skill entry (v1)",
+  "allOf": [
+    {
+      "$ref": "entry.schema.json"
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "skill"
+        },
+        "id": {
+          "pattern": "^struklabs\\.skill\\.[a-z][a-z0-9_-]*$"
+        },
+        "artifact": {
+          "pattern": "^skills/[a-z][a-z0-9_-]*/SKILL\\.md$"
+        }
+      }
+    }
+  ]
+}
