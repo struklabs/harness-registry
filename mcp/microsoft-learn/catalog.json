@@ -5,7 +5,7 @@
   "name": "Microsoft Learn",
   "description": {
     "en": "Search Microsoft documentation and code samples through the official Microsoft Learn MCP server.",
-    "tr": "Resm? Microsoft Learn MCP sunucusu ?zerinden Microsoft belgelerinde ve kod ?rneklerinde arama yapar."
+    "tr": "Resmî Microsoft Learn MCP sunucusu üzerinden Microsoft belgelerinde ve kod örneklerinde arama yapar."
   },
   "version": "1.0.0",
   "license": "MIT",
