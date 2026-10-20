@@ -41,6 +41,7 @@ test('build is deterministic and independent of cwd; validate does not rewrite s
 
 for (const [name, path, mutate, message] of [
   ['missing Turkish description', 'skills/release-notes/catalog.json', e => { delete e.description.tr; }, /missing tr/u],
+  ['corrupted Turkish text', 'tools/json_format/catalog.json', e => { e.description.tr = 'do?rular'; }, /looks corrupted/u],
   ['unofficial publisher', 'tools/json_format/catalog.json', e => { e.publisher = 'Community'; }, /StrukLabs/u],
   ['unknown metadata', 'tools/json_format/catalog.json', e => { e.unknown = true; }, /unknown property/u],
   ['permission mismatch', 'tools/json_format/manifest.json', e => { e.permissions.fs.read = ['.']; }, /permissions differ/u],

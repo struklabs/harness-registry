@@ -5,7 +5,7 @@
   "name": "Release Notes",
   "description": {
     "en": "Turn supplied changes or a diff into user-facing release notes. Use when preparing a changelog or release announcement.",
-    "tr": "Sa?lanan de?i?ikliklerden veya diff ??kt?s?ndan kullan?c?ya y?nelik s?r?m notlar? haz?rlar. De?i?iklik g?nl??? veya s?r?m duyurusu yazarken kullan?l?r."
+    "tr": "Sağlanan değişikliklerden veya diff çıktısından kullanıcıya yönelik sürüm notları hazırlar. Değişiklik günlüğü veya sürüm duyurusu yazarken kullanılır."
   },
   "version": "1.0.0",
   "license": "MIT",

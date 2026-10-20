@@ -21,6 +21,19 @@ async function regularFile(path, maxBytes = 512 * 1024) {
   return readFile(join(fileURLToPath(root), ...parts), 'utf8');
 }
 
+// Mojibake guard: a lossy write (e.g. PowerShell without -Encoding utf8) turns Turkish
+// letters into "?" or U+FFFD. Fail when a Turkish ("tr") field shows either symptom.
+export function checkTurkishText(value, where = 'entry') {
+  if (Array.isArray(value)) return value.forEach((v, i) => checkTurkishText(v, `${where}[${i}]`));
+  if (value && typeof value === 'object') {
+    for (const [key, v] of Object.entries(value)) {
+      if (key === 'tr' && typeof v === 'string') {
+        check(!/\p{L}\?\p{L}/u.test(v) && !v.includes('�'), `${where}.tr looks corrupted ("?" between letters or U+FFFD); save the file as UTF-8`);
+      } else checkTurkishText(v, `${where}.${key}`);
+    }
+  }
+}
+
 export function checkPermissions(p) {
   for (const domain of p.network) {
     const host = domain.replace(/^\*\./u, '');
@@ -91,6 +104,7 @@ export async function buildIndex() {
       const entry = JSON.parse(await regularFile(`${dir}/catalog.json`));
       await validateSchema(entry, schema(`schemas/${type}.schema.json`), `${dir}/catalog.json`);
       check(entry.id === `struklabs.${type}.${name}`, `${dir}: id must be struklabs.${type}.${name}`);
+      checkTurkishText(entry, `${dir}/catalog.json`);
       await checkPayload(entry, dir);
       entries.push(entry);
     }
